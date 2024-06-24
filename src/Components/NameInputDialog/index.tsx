@@ -6,6 +6,8 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { useAppDispatch } from '../../Lib/Store/hooks';
+import  { saveUserName } from '../../Lib/Slices/ChatRoomSlice';
 
 interface NameInputDialogProps {
     open: boolean;
@@ -14,6 +16,7 @@ interface NameInputDialogProps {
 
 const NameInputDialog = ({open, handleClose}: NameInputDialogProps) => {
 
+  const dispatch = useAppDispatch();
 
   return (
     <React.Fragment>
@@ -28,7 +31,7 @@ const NameInputDialog = ({open, handleClose}: NameInputDialogProps) => {
             const formData = new FormData(event.currentTarget);
             const formJson = Object.fromEntries((formData as any).entries());
             const name = formJson.name;
-            console.log(name);
+            dispatch(saveUserName(name ?? "Unknown User"));
             handleClose();
           },
         }}

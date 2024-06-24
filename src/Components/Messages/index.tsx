@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { Message } from "@/types/message";
-import { Avatar, Divider, List, ListItem, ListItemAvatar, ListItemText, Typography } from "@mui/material";
+import { Avatar, Divider, List, ListItem, ListItemAvatar, ListItemText, Stack, Typography } from "@mui/material";
 
 interface MessagesProps {
     readonly messages: Message[];
@@ -27,7 +27,6 @@ const Messages = ({ messages }: MessagesProps) => {
                                 </ListItem>
                                 <Divider variant="inset" component="li" />
                             </Fragment>
-
                         );
                     })
                 }

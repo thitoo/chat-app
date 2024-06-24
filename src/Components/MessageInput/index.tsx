@@ -4,7 +4,7 @@ import { useState } from "react";
 
 interface MessageInputProps {
 
-    sendMessage: () => void;
+    sendMessage: (message: string) => void;
 
 }
 
@@ -12,29 +12,30 @@ const MessageInput = ({ sendMessage }: MessageInputProps) => {
 
     const [message, setMessage] = useState<null | string>()
 
-    const hanleTypeMessage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleTypeMessage = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault();
         setMessage(e.target.value)
     }
 
     const handleSendMessage = () => {
         if (message) {
-            sendMessage()
+            sendMessage(message)
             setMessage(null)
         }
     }
 
     return <Box position={'absolute'} bottom={24} left={0} right={0} >
         <TextField
+            value={message ?? ""}
             fullWidth
             autoFocus
             type="text"
             placeholder="Type a message..."
             variant="outlined"
             size="small"
-            onChange={hanleTypeMessage}
+            onChange={handleTypeMessage}
             InputProps={{
-                endAdornment: Boolean(message) && <InputAdornment position="end"> <IconButton onClick={handleSendMessage}><Send /></IconButton> </InputAdornment>
+                endAdornment: Boolean(message) && <InputAdornment position="end"> <IconButton onClick={handleSendMessage} ><Send /></IconButton> </InputAdornment>
             }}
         />
     </Box>
