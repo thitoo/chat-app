@@ -1,11 +1,10 @@
-import { Box, Icon, IconButton, InputAdornment, TextField } from "@mui/material";
+import { Box, IconButton, InputAdornment, TextField } from "@mui/material";
 import { Send } from '@mui/icons-material';
 import { useState } from "react";
 
+
 interface MessageInputProps {
-
     sendMessage: (message: string) => void;
-
 }
 
 const MessageInput = ({ sendMessage }: MessageInputProps) => {
@@ -24,20 +23,20 @@ const MessageInput = ({ sendMessage }: MessageInputProps) => {
         }
     }
 
-    return <Box position={'absolute'} bottom={24} left={0} right={0} >
-        <TextField
-            value={message ?? ""}
-            fullWidth
-            autoFocus
-            type="text"
-            placeholder="Type a message..."
-            variant="outlined"
-            size="small"
-            onChange={handleTypeMessage}
-            InputProps={{
-                endAdornment: Boolean(message) && <InputAdornment position="end"> <IconButton onClick={handleSendMessage} ><Send /></IconButton> </InputAdornment>
-            }}
-        />
+    return <Box position={'sticky'} bottom={20}>
+            <TextField
+                value={message ?? ""}
+                fullWidth
+                autoFocus
+                type="text"
+                placeholder="Type a message..."
+                variant="outlined"
+                size="small"
+                onChange={handleTypeMessage}
+                InputProps={{
+                    endAdornment: Boolean(message) && <InputAdornment position="end"> <IconButton onClick={handleSendMessage} ><Send /></IconButton> </InputAdornment>
+                }}
+            />
     </Box>
 }
 

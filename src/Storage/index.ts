@@ -1,12 +1,12 @@
-import { MessageState } from "@/Lib/Slices/ChatRoomSlice";
 import { RootState } from "@/Lib/Store";
 
+export const STORAGE_KEY = "chat-app-data"
 
 // Save state to localStorage
 export const saveStateToLocalStorage = (state: RootState ) =>{
     try {
       const serializedState = JSON.stringify(state);
-      localStorage.setItem('chat-app-data', serializedState);
+      localStorage.setItem(STORAGE_KEY, serializedState);
     } catch (e) {
       console.warn('Could not save state', e);
     }
@@ -15,7 +15,7 @@ export const saveStateToLocalStorage = (state: RootState ) =>{
   // Load state from localStorage
 export const loadStateFromLocalStorage = (): RootState | undefined  => {
     try {
-      const serializedState = localStorage.getItem('chat-app-data');
+      const serializedState = localStorage.getItem(STORAGE_KEY);
       if (serializedState === null) {
         return undefined;
       }
