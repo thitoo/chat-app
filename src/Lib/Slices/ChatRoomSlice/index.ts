@@ -1,15 +1,19 @@
 import { Message } from "@/types/message";
 import { createAppSlice } from "../createAppSlice";
 import { PayloadAction } from "@reduxjs/toolkit";
-
-
+import { v4 as uuidv4 } from 'uuid';
 
 export interface MessageState {
     messages: Message[];
 }
 
 const initialState: MessageState = {
-    messages: []
+    messages: [{
+        id: uuidv4(),
+        user: "John Doe",
+        message: "Hello, World!",
+        timestamp: new Date().toISOString(),
+    }]
 }
 
 export const chatRoomSlice = createAppSlice({
