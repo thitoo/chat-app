@@ -1,14 +1,12 @@
 import { combineSlices, configureStore } from "@reduxjs/toolkit";
-import { messageSlice } from "../Slices/MessageSlice";
+import { chatRoomSlice } from "../Slices/ChatRoomSlice";
 
 
-const rootReducer = combineSlices(messageSlice)
+const rootReducer = combineSlices(chatRoomSlice)
 
 export const makeStore = () => {
     return configureStore({
-        reducer: {
-           
-        }
+        reducer: rootReducer
     })
 }
 

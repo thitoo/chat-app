@@ -12,7 +12,7 @@ const initialState: MessageState = {
     messages: []
 }
 
-export const messageSlice = createAppSlice({
+export const chatRoomSlice = createAppSlice({
     name: "messageCenter",
     initialState,
     reducers: (create) => ({
@@ -25,5 +25,11 @@ export const messageSlice = createAppSlice({
         getMessage: create.reducer((state) => {
             
         })
-    })
+    }),
+    selectors:  {
+        messages: (state) => state.messages
+    }
 })
+
+export const { sendMessage, receiveMessage, getMessage } = chatRoomSlice.actions;
+export const { messages } = chatRoomSlice.selectors;
