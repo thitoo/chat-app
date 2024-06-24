@@ -20,15 +20,15 @@ const NameInputDialog = ({open, handleClose}: NameInputDialogProps) => {
       <Dialog
         open={open}
         maxWidth="md"
-        onClose={handleClose}
+        // onClose={handleClose}
         PaperProps={{
           component: 'form',
           onSubmit: (event: React.FormEvent<HTMLFormElement>) => {
             event.preventDefault();
             const formData = new FormData(event.currentTarget);
             const formJson = Object.fromEntries((formData as any).entries());
-            const email = formJson.name;
-            console.log(email);
+            const name = formJson.name;
+            console.log(name);
             handleClose();
           },
         }}
